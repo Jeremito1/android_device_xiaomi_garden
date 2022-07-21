@@ -34,6 +34,7 @@ dalvik.vm.dex2oat-threads=4
 dalvik.vm.image-dex2oat-threads=4
 
 # Display
+debug.sf.disable_backpressure=1
 ro.surface_flinger.has_HDR_display=true
 ro.surface_flinger.has_wide_color_display=true
 ro.opengles.version=196610
@@ -42,6 +43,30 @@ vendor.display.enable_default_color_mode=0
 
 # RIL
 persist.sys.fflag.override.settings_provider_model=false
+ro.ril.hsxpa=3
+ro.ril.gprsclass=10
+ro.ril.hep=1
+ro.ril.enable.dtm=1
+ro.ril.hsdpa.category=12
+ro.ril.enable.a53=1
+ro.ril.enable.3g.prefix=1
+ro.ril.htcmaskw1.bitmask=4294967295
+ro.ril.htcmaskw1=14449
+ro.ril.hsupa.category=7
+ro.ril.hsdpa.category=10
+ro.ril.enable.a52=1
+ro.ril.set.mtu1472=1
+persist.cust.tel.eons=1
+ro.config.hw_fast_dormancy=1
+persist.data_netmgrd_mtu=1482
+persist.data_netmgrd_nint=8
+ro.use_data_netmgrd=true
+ro.ril.enable.dtm=1
+ro.ril.def.agps.mode=2
+ro.ril.def.agps.feature=1
+ro.ril.enable.gea3=1
+ro.ril.enable.fd.plmn.prefix=23402,23410,23411
+ro.ril.set.mtu1472=1
 
 # IORap
 ro.iorapd.enable=true 
@@ -77,6 +102,15 @@ debug.cpurend.vsync=false
 sys.ipo.pwrdncap=2
 
 # SurfaceFlinger
+debug.sf.disable_backpressure=1
+debug.sf.enable_gl_backpressure=1
+debug.sf.enable_hwc_vds=1
+debug.sf.latch_unsignaled=1
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+ro.surface_flinger.max_virtual_display_dimension=4096
+ro.surface_flinger.vsync_event_phase_offset_ns=2000000
+ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.running_without_sync_framework=true
 debug.sf.early_app_phase_offset_ns=500000
@@ -120,19 +154,47 @@ persist.sys.sf.disable_blurs=1
 ro.sf.blurs_are_expensive=1
 
 # Memory Management
+ro.vendor.qti.sys.fw.bg_apps_limit=600
+ro.vendor.qti.sys.fw.bservice_limit=60
+persist.vendor.sys.memplus.enable=false
+ro.config.hw_fast_dormancy=1
+ro.sys.fw.bg_apps_limit=0
+ro.HOME_APP_ADJ=1
 ro.sys.fw.bservice_enable=true
 ro.sys.fw.bservice_limit=5
 ro.sys.fw.bservice_age=5000
 ro.am.reschedule_service=true
 ro.config.fha_enable=true
 ro.sys.fw.bg_apps_limit=32
+ro.config.fha_enable=true
 ro.config.dha_cached_max=16
-ro.config.dha_empty_max=42
+ro.config.dha_cached_min=2
 ro.config.dha_empty_init=32
+ro.config.dha_empty_min=6
+ro.config.dha_empty_max=42
+ro.config.ldha_es_enable=false
+ro.config.ldha_spc_enable=true
+ro.config.64bit_lmk_enable=false
+ro.config.dha_ils_enable=true
+ro.config.dha_ils_dyna_lmk=false
+ro.config.dha_ils_rate=1.5
+ro.config.dha_ils_sdha_rate=1.8
+ro.config.dha_whitelist_enable=2
+ro.config.dha_goldenlist_enable=0
+ro.config.dha_HEC_enable=0
+ro.config.dha_frag_enable=0
 ro.config.dha_lmk_scale=0.545
-ro.config.dha_th_rate=2.3
+ro.config.dha_lmk_rate=1
+ro.config.dha_dyna_lmk_enable=false
+ro.config.sdha_margin_min_low=20
+ro.config.sdha_margin_min_high=60
 ro.config.sdha_apps_bg_max=64
 ro.config.sdha_apps_bg_min=8
+ro.config.dha_th_rate=2.3
+ro.config.dha_th_level=15
+ro.config.dha_defend_th_level=3
+ro.config.dha_whl_key=255
+ro.config.dha_gdl_key=63
 
 # WFD
 persist.sys.wfd.nohdcp=1
@@ -143,7 +205,7 @@ persist.sys.wfd.virtual=0
 ro.ril.power_collapse=1
 power.saving.mode=1
 usb_wakeup=enable
-wifi.supplicant_scan_interval=220
+wifi.supplicant_scan_interval=150
 power_supply.wakeup=enable
 ro.ril.disable.power.collapse=0
 
@@ -168,6 +230,7 @@ persist.sys.use_dithering=1
 force_hw_ui=true
 ro.sf.compbypass.enable=0
 hwui.render_dirty_regions=false
+debug.sf.latch_unsignaled=1
 persist.sys.use_16bpp_alpha=1
 ro.max.fling_velocity=20000
 ro.config.enable.hw_accel=true
@@ -190,22 +253,33 @@ ro.config.disable.hw_accel=false
 hw3d.force=1
 
 # Touch improvements
-touch.pressure.scale=0.001 
-persist.sys.ui.hw=1 
-touch.size.calibration=diameter 
-touch.size.scale=1 
-touch.size.bias=0 
-touch.size.isSummed=0 
-touch.pressure.scale=0.001 
-touch.orientation.calibration=none 
-touch.distance.calibration=none 
-touch.distance.scale=0 
-touch.coverage.calibration=box 
-touch.gestureMode=spots 
-MultitouchSettleInterval=1ms 
-MultitouchMinDistance=1px 
-TapInterval=1ms 
-TapSlop=1px
+device.internal=1
+touch.deviceType=touchScreen
+touch.orientationAware=1
+touch.filter.level=0
+touch.size.calibration=diameter
+touch.size.scale=5
+touch.size.bias=5
+touch.size.isSummed=0
+touch.gestureMode=pointer
+touch.pressure.calibration=physical
+touch.pressure.scale=0.00000125
+touch.distance.calibration=none
+touch.distance.scale=0
+touch.gestureMode=spots
+MultitouchSettleInterval=0.1ms
+MultitouchMinDistance=0.5 px
+TapInterval=0.5 ms
+TapSlop=0.5 px
+touch.orientation.calibration=none
+touch.coverage.calibration=box
+windowsmgr.max_events_per_sec=100
+ro.min_pointer_dur=8
+view.touch_slop=1
+view.scroll_friction=0
+view.scroll_friction=10
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.shared=speed
 
 # Blurs
 ro.surface_flinger.supports_background_blur=1
@@ -227,6 +301,151 @@ persist.log.tag.libnfc_nci=S
 persist.log.tag.libPowerHal=S
 persist.log.tag.mTEE=S
 persist.log.tag.mtkpower@impl=S
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1
+logcat.live=disable
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+ro.config.nocheckin=1
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1
+debugtool.anrhistory=0
+profiler.launch=false
+profiler.debugmonitor=false
+debug.atrace.tags.enableflags=0
+debug.kill_allocating_task=0
+profiler.force_disable_ulog=true
+profiler.hung.dumpdobugreport=false
+persist.service.pcsync.enable=0
+persist.service.lgospd.enable=0
 
 # Gboard Rounded
 ro.com.google.ime.corner_key_r=35
+
+# HWUI
+ro.hwui.drop_shadow_cache_size=6
+ro.hwui.gradient_cache_size=1
+ro.hwui.layer_cache_size=48
+ro.hwui.path_cache_size=32
+ro.hwui.r_buffer_cache_size=8
+ro.hwui.text_large_cache_height=4096
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_small_cache_width=1024
+ro.hwui.texture_cache_flushrate=0.4
+ro.hwui.texture_cache_size=72
+
+# Better internet 
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
+net.eth0.dns1=8.8.8.8
+net.eth0.dns2=8.8.4.4
+net.gprs.dns1=8.8.8.8
+net.gprs.dns2=8.8.4.4
+net.ipv4.ip_no_pmtu_disc=0
+net.ipv4.route.flush=1
+net.ipv4.tcp_ecn=0
+net.ipv4.tcp_fack=1
+net.ipv4.tcp_mem=187000
+net.ipv4.tcp_moderate_rcvbuf=1
+net.ipv4.tcp_no_metrics_save=1
+net.ipv4.tcp_rfc1337=1
+net.ipv4.tcp_rmem=4096
+net.ipv4.tcp_sack=1
+net.ipv4.tcp_timestamps=1
+net.ipv4.tcp_window_scaling=1
+net.ipv4.tcp_wmem=4096
+net.ppp0.dns1=8.8.8.8
+net.ppp0.dns2=8.8.4.4
+net.rmnet0.dns1=8.8.8.8
+net.rmnet0.dns2=8.8.4.4
+net.tcp.buffersize.default=4096,87380,256960,4096,16384,256960
+net.tcp.buffersize.edge=4096,87380,256960,4096,16384,256960
+net.tcp.buffersize.evdo_b=6144,87380,1048576,6144,
+net.tcp.buffersize.gprs=4096,87380,256960,4096,16384,256960
+net.tcp.buffersize.hsdpa=6144,87380,1048576,6144,8
+net.tcp.buffersize.hspa=6144,87380,524288,6144,163
+net.tcp.buffersize.lte=524288,1048576,2097152,5242
+net.tcp.buffersize.umts=4096,87380,256960,4096,16384,256960
+net.tcp.buffersize.wifi=4096,87380,256960,4096,16384,256960
+net.wlan0.dns1=8.8.8.8
+net.wlan0.dns2=8.8.4.4
+
+# Modify MMS APN Retry Timer
+ro.gsm.2nd_data_retry_config=max/_retries=3, 3000, 3000, 3000
+
+# Phone Ring Faster When Dialing Out
+ro.telephony.call_ring.delay=800
+mot.proximity.delay=25
+
+# Touch fix issue
+ro.product.multi_touch_enabled=true
+ro.product.max_num_touch=20
+
+# Improve voice call clarity 
+ro.ril.enable.amr.wideband=1
+ro.config.vc_call_steps=20
+
+# Improve panorama shots
+ro.media.panorama.defres=10800x2442
+ro.media.panorama.frameres=3264x1840
+
+# Stream videos faster
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=true
+media.stagefright.enable-scan=true
+media.stagefright.enable-http=true
+media.stagefright.enable-rtsp=true
+media.stagefright.enable-record=true
+
+# Give support on ipv6 and ipv4
+persist.telephony.support.ipv6=1
+persist.telephony.support.ipv4=1
+
+# Improve overall media quality
+ro.media.enc.jpeg.quality=100
+ro.media.dec.jpeg.memcap=8000000
+ro.media.enc.hprof.vid.bps=8000000
+ro.media.dec.aud.wma.enabled=1
+ro.media.dec.vid.wmv.enabled=1
+ro.media.cam.preview.fps=0
+ro.media.codec_priority_for_thumb=so
+debug.fb.rgb565=0
+power.saving.mode=1compbypass.enable
+
+# DHA
+ro.sys.fw.use_trim_settings=true 
+ro.sys.fw.empty_app_percent=50 
+ro.sys.fw.trim_empty_percent=100 
+ro.sys.fw.trim_cache_percent=100
+ro.sys.fw.bservice_enable=true 
+ro.sys.fw.bservice_limit=5 
+ro.sys.fw.bservice_age=5000
+ro.sys.fw.trim_enable_memory=2147483648
+
+# Android GO prop
+ro.config.low_ram=true
+
+# Cpu Threading
+persist.sys.dalvik.hyperthreading=true
+persist.sys.dalvik.multithread=true
+
+# Smoothess UI
+persist.service.lgospd.enable=0
+persist.service.pcsync.enable=0
+ro.ril.enable.a52=1
+ro.ril.enable.a53=0
+
+# GPU Render
+debug.composition.type=skiagl
+debug.hwui.renderer=skiagl
+
+# OpenGLES version
+#196608 is decimal for 0x30000 to report major/minor versions as 3/0
+#196609 is decimal for 0x30001 to report major/minor versions as 3/1
+#196610 is decimal for 0x30002 to report major/minor versions as 3/2
+ro.opengles.version=196608
+
+# Disable Dyn Fps 
+ro.vendor.dfps.enable=false
+ro.vendor.smart_dfps.enable=false
