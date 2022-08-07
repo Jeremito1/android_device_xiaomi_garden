@@ -21,15 +21,15 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# Inherit some common Lineage stuff
+# Inherit some common Corvus stuff.
 TARGET_BOOT_ANIMATION_RES := 720
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := garden
 PRODUCT_MANUFACTURER := xiaomi
-PRODUCT_NAME := lineage_garden
+PRODUCT_NAME := du_garden
 
 # Build info
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
